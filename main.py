@@ -74,8 +74,8 @@ def save_board():
         y1 = y + board.winfo_height()
         ImageGrab.grab().crop((x,y,x1,y1)).save(filename)
         messagebox.showinfo("image is saved as"+str(filename))
-    except:
-        messagebox.showerror("unable to save image \n something went wrong")
+    except Exception as e:
+        messagebox.showerror(f"unable to save image \n {e}")
 
 
 # view event
