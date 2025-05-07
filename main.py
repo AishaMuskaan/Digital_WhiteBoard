@@ -6,18 +6,22 @@ import PIL.ImageGrab as ImageGrab
 import tkinter as tk
 import os
 
-
-# Create root master with the Tk constructor
-root=Tk()
-root.title('Whiteboard')
-root.geometry('1050x570+130+50')
-root.resizable(0,0)
-
-
+BOARD_WIDTH = 930
+BOARD_HEIGHT = 500
+WINDOW_WIDTH = 1050
+WINDOW_HEIGHT = 570
 current_x = 0
 current_y = 0
 color = 'black'
 erase_clr = 'white'
+
+# Create root master with the Tk constructor
+
+root=Tk()
+root.title('Whiteboard')
+root.geometry(f'{WINDOW_WIDTH}x{WINDOW_HEIGHT}+130+50')
+root.resizable(0,0)
+
 
 
 # location on board to draw
@@ -134,7 +138,7 @@ colors= Canvas(root,width=37,height=310,bg='#f2f3f5',border=10,bd=0)
 colors.place(x=30,y=60)
 
 # Board
-board=Canvas(root,background='white',width=930,height=500,cursor="hand2")
+board=Canvas(root,background='white',width=BOARD_WIDTH,height=BOARD_HEIGHT ,cursor="hand2")
 board.place(x=100,y=10)
 
 # binding board with button
