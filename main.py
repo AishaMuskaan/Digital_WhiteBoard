@@ -143,27 +143,13 @@ board.bind("<B1-Motion>",add_line)
 
 # fill color in color palette
 def create_palette():
-    id = colors.create_rectangle((10,10,30,30),fill="Black")
-    colors.tag_bind(id,"<Button-1>",lambda x: show_color("Black") )
-    id = colors.create_rectangle((10,40,30,60),fill="#bf9f47")
-    colors.tag_bind(id,"<Button-1>",lambda x: show_color("#bf9f47") )
-    id = colors.create_rectangle((10,70,30,90),fill="#75286c")
-    colors.tag_bind(id,"<Button-1>",lambda x: show_color("#75286c") )
-    id = colors.create_rectangle((10,100,30,120),fill="#0ff2db")
-    colors.tag_bind(id,"<Button-1>",lambda x: show_color("#0ff2db") )
-    id = colors.create_rectangle((10,130,30,150),fill="#95c9a0")
-    colors.tag_bind(id,"<Button-1>",lambda x: show_color("#95c9a0") )
-    id = colors.create_rectangle((10,160,30,180),fill="#f20fae")
-    colors.tag_bind(id,"<Button-1>",lambda x: show_color("#f20fae") )
-    id = colors.create_rectangle((10,190,30,210),fill="#736e14")
-    colors.tag_bind(id,"<Button-1>",lambda x: show_color("#736e14") )
-    id = colors.create_rectangle((10,220,30,240),fill="#122966")
-    colors.tag_bind(id,"<Button-1>",lambda x: show_color("#122966") )
-    id = colors.create_rectangle((10,250,30,270),fill="#f26907")
-    colors.tag_bind(id,"<Button-1>",lambda x: show_color("#f26907") )
-    id = colors.create_rectangle((10,280,30,300),fill="#f2e707")
-    colors.tag_bind(id,"<Button-1>",lambda x: show_color("#f2e707") )
-
+    color_list = ["black", "#bf9f47", "#75286c", "#0ff2db", "#95c9a0", 
+                    "#f20fae", "#736e14", "#122966", "#f26907", "#f2e707"]
+    for i, clr in enumerate(color_list):
+        y = 10 + (i * 30)
+        id = colors.create_rectangle(10, y, 30, y + 20, fill=clr)
+        colors.tag_bind(id, "<Button-1>", lambda x, c = clr: show_color(c))
+   
 create_palette()
 
 # add slider
