@@ -25,13 +25,13 @@ root.resizable(0,0)
 
 
 # location on board to draw
-def locate_xy(work):
+def update_mouse_position(work):
     global current_y,current_x
     current_x = work.x
     current_y = work.y
 
 # create drawing
-def add_line(work):
+def add_line_on_drag(work):
     global current_y,current_x
     board.create_line((current_x,current_y,work.x,work.y),width=get_current_value(),fill=color)
     current_x,current_y = work.x,work.y
@@ -142,8 +142,8 @@ board=Canvas(root,background='white',width=BOARD_WIDTH,height=BOARD_HEIGHT ,curs
 board.place(x=100,y=10)
 
 # binding board with button
-board.bind("<Button-1>",locate_xy)
-board.bind("<B1-Motion>",add_line)
+board.bind("<Button-1>",update_mouse_position)
+board.bind("<B1-Motion>",add_line_on_drag)
 
 # fill color in color palette
 def create_palette():
